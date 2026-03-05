@@ -1,14 +1,5 @@
 // Adventure Game Custom Level
 // Exported from GameBuilder on 2026-03-05T09:09:33.517Z
-// How to use this file:
-// 1) Save as assets/js/adventureGame/GameLevelAlienplanet.js in your repo.
-// 2) Reference it in your runner or level selector. Examples:
-//    import GameLevelPlanets from '/assets/js/GameEnginev1/GameLevelPlanets.js';
-//    import GameLevelAlienplanet from '/assets/js/adventureGame/GameLevelAlienplanet.js';
-//    export const gameLevelClasses = [GameLevelPlanets, GameLevelAlienplanet];
-//    // or pass it directly to your GameControl as the only level.
-// 3) Ensure images exist and paths resolve via 'path' provided by the engine.
-// 4) You can add more objects to this.classes inside the constructor.
 
 import GameEnvBackground from '/assets/js/GameEnginev1/essentials/GameEnvBackground.js';
 import Player from '/assets/js/GameEnginev1/essentials/Player.js';
@@ -22,6 +13,9 @@ class GameLevelAlienplanet {
         const height = gameEnv.innerHeight;
 
         // background configuration for the alien planet level
+        // the background is dark and eerie with a purple hue 
+        // it features strange rock formations and a starry sky 
+
         const bgData = {
             name: "custom_bg",
             src: path + "/images/gamebuilder/bg/alien_planet.jpg",
@@ -29,6 +23,8 @@ class GameLevelAlienplanet {
         };
         
         // player configuration for the UFO character
+        // the UFO has a unique movement pattern with floaty physics
+        // it can move in all directions and has a small hitbox for precise navigation
         const playerData = {
             id: 'playerData',
             src: path + "/images/gamebuilder/sprites/ufos.png",
@@ -49,8 +45,11 @@ class GameLevelAlienplanet {
             hitbox: { widthPercentage: 0, heightPercentage: 0 },
             keypress: { up: 87, left: 65, down: 83, right: 68 }
             };
-        
+      
+            
         // npc configuration for the astronaut character
+        // the astronaut is stranded on the alien planet and needs to be rescued
+
         const npcData1 = {
             id: 'astro',
             greeting: 'Hey! You rescued me!',
@@ -73,6 +72,8 @@ class GameLevelAlienplanet {
             reaction: function() { if (this.dialogueSystem) { this.showReactionDialogue(); } else { console.log(this.greeting); } },
             interact: function() { if (this.dialogueSystem) { this.showRandomDialogue(); } }
         };
+
+        
         // barrier configuration for the invisible barriers in the level
         const dbarrier_1 = {
             id: 'dbarrier_1', x: 591, y: 3, width: 133, height: 279, visible: false,
