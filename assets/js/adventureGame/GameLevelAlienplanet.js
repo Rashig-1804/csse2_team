@@ -25,6 +25,8 @@ class GameLevelAlienplanet {
         // player configuration for the UFO character
         // the UFO has a unique movement pattern with floaty physics
         // it can move in all directions and has a small hitbox for precise navigation
+        // animation rate set to 50, to maintain a steady, smooth animation for the player character
+
         const playerData = {
             id: 'playerData',
             src: path + "/images/gamebuilder/sprites/ufos.png",
@@ -49,7 +51,9 @@ class GameLevelAlienplanet {
             
         // npc configuration for the astronaut character
         // the astronaut is stranded on the alien planet and needs to be rescued
+        
 
+        // animation rate set to 50, to maintain a steady, smooth animation for the NPC
         const npcData1 = {
             id: 'astro',
             greeting: 'Hey! You rescued me!',
@@ -73,7 +77,7 @@ class GameLevelAlienplanet {
             interact: function() { if (this.dialogueSystem) { this.showRandomDialogue(); } }
         };
 
-        
+
         // barrier configuration for the invisible barriers in the level
         const dbarrier_1 = {
             id: 'dbarrier_1', x: 591, y: 3, width: 133, height: 279, visible: false,
