@@ -13,10 +13,10 @@ permalink: /gamify/myufogame
     // Adnventure Game assets locations
     import Core from "{{site.baseurl}}/assets/js/GameEnginev1/essentials/Game.js";
     import GameControl from "{{site.baseurl}}/assets/js/GameEnginev1/essentials/GameControl.js";
-    import GameLevelAlienplanet2 from "{{site.baseurl}}/assets/js/GameEnginev1/GameLevelAlienplanet2.js";
+    import GameLevelAlienplanet from "{{site.baseurl}}/assets/js/GameEnginev1/GameLevelAlienplanet.js";
     import { pythonURI, javaURI, fetchOptions } from '{{site.baseurl}}/assets/js/api/config.js';
 
-    const gameLevelClasses = [GameLevelAlienplanet2];
+    const gameLevelClasses = [GameLevelAlienplanet];
 
     // Web Server Environment data
     const environment = {
