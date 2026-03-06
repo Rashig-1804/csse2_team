@@ -12,10 +12,13 @@
 // Adventure Game Custom Level
 // Exported from GameBuilder on 2026-03-05T09:09:33.517Z
 
+
+// add java documentation to explain the interaction and collision and where it occurs
 import GameEnvBackground from '/assets/js/GameEnginev1/essentials/GameEnvBackground.js';
 import Player from '/assets/js/GameEnginev1/essentials/Player.js';
 import Npc from '/assets/js/GameEnginev1/essentials/Npc.js';
 import Barrier from '/assets/js/GameEnginev1/essentials/Barrier.js';
+
 
 class GameLevelAlienplanet {
     constructor(gameEnv) {
@@ -84,7 +87,14 @@ class GameLevelAlienplanet {
             downLeft: { row: 0, start: 0, columns: 3 },
             hitbox: { widthPercentage: 0.1, heightPercentage: 0.2 },
             dialogues: ['Hey! You rescued me!'],
+
+    
+            // the reaction function is called when the player first rescues the astronaut
+            // while the interact function is called when the player interacts with the astronaut after rescuing them
+
+            // reaction function to show a message when the astronaut is rescued
             reaction: function() { 
+                // Check if the rescue message has already been shown to prevent duplicates
                 if (!window.__rescueMsgShown) {
                     window.__rescueMsgShown = true;
                     const msg = document.createElement('div');
@@ -95,6 +105,7 @@ class GameLevelAlienplanet {
                 }
                 if (this.dialogueSystem) { this.showReactionDialogue(); } 
             },
+            // interact function to show a message when the player interacts with the astronaut after rescuing them
             interact: function() { 
                 if (!window.__rescueMsgShown) {
                     window.__rescueMsgShown = true;
@@ -107,6 +118,10 @@ class GameLevelAlienplanet {
                 if (this.dialogueSystem) { this.showRandomDialogue(); } 
             }
         };
+        // the reaction function is designed to trigger a special message 
+        // when the player first rescues the astronaut, providing immediate feedback and a sense of accomplishment. 
+        
+        // The interact function allows for ongoing interaction with the NPC, showing different dialogues to keep the experience fresh and engaging.
 
 
         // barrier configuration for the invisible barriers in the level
