@@ -5,20 +5,22 @@ import Barrier from '/assets/js/GameEnginev1/essentials/Barrier.js';
 
 /**
  * @class GameLevelCustom
- * @description FA1: Custom level configuration for SkyKingdom featuring floaty physics.
+ * @description FA1: Space Kingdom Mini-Game.
+ * Includes a cloud background, an astronaut player with floaty physics,
+ * a decorative astronaut NPC, and a custom collision barrier.
  */
 class GameLevelCustom {
     constructor(gameEnv) {
         const path = gameEnv.path;
 
-        /** @type {Object} bgData - Configuration for the cloud background. */
+        /** @type {Object} bgData - Included: One Background (Clouds) */
         const bgData = {
             name: "custom_bg",
             src: path + "/images/gamebuilder/bg/clouds.jpg",
             pixels: { height: 720, width: 1280 }
         };
 
-        /** @type {Object} playerData - Configuration for the Astronaut player with floaty movement. */
+        /** @type {Object} playerData - Included: One Player (Astronaut) with custom speed and rotation */
         const playerData = {
             id: 'playerData',
             src: path + "/images/gamebuilder/sprites/astro.png",
@@ -37,10 +39,11 @@ class GameLevelCustom {
             upLeft: { row: 2, start: 0, columns: 3, rotate: Math.PI/16 },
             upRight: { row: 3, start: 0, columns: 3, rotate: -Math.PI/16 },
             hitbox: { widthPercentage: 0.2, heightPercentage: 0.2 },
-            keypress: { up: 87, left: 65, down: 83, right: 68 }
+            // Controls disabled for FA1 baseline
+            keypress: { up: null, left: null, down: null, right: null }
         };
 
-        /** @type {Object} npcData1 - Configuration for the guide NPC Astronaut. */
+        /** @type {Object} npcData1 - Included: One NPC (Astronaut) */
         const npcData1 = {
             id: 'Astronaut1',
             src: path + "/images/gamebuilder/sprites/astro.png",
@@ -54,12 +57,11 @@ class GameLevelCustom {
             left: { row: Math.min(2, 4 - 1), start: 0, columns: 3 },
             up: { row: Math.min(3, 4 - 1), start: 0, columns: 3 },
             hitbox: { widthPercentage: 0.0, heightPercentage: 0.0 },
-            // FORCING EMPTY STRINGS TO STOP "HELLO"
             greeting: "",
             dialogues: []
         };
 
-        /** @type {Object} dbarrier_1 - Configuration for the collision barrier. */
+        /** @type {Object} dbarrier_1 - Included: One Barrier for collision testing */
         const dbarrier_1 = {
             id: 'dbarrier_1', 
             x: 315, 
@@ -87,57 +89,6 @@ class GameLevelCustom {
                     if (window && window.parent) window.parent.postMessage({ type: 'rpg:objects', summary }, '*');
                 } catch (_) {}
             }, 250);
-        } catch (_) {}
-        try {
-            if (window && window.parent) {
-                try {
-                    const rect = (gameEnv && gameEnv.container && gameEnv.container.getBoundingClientRect) ? gameEnv.container.getBoundingClientRect() : { top: gameEnv.top || 0, left: 0 };
-                    window.parent.postMessage({ type: 'rpg:env-metrics', top: rect.top, left: rect.left }, '*');
-                } catch (_) {
-                    try { window.parent.postMessage({ type: 'rpg:env-metrics', top: gameEnv.top, left: 0 }, '*'); } catch (__){ }
-                }
-            }
-        } catch (_) {}
-        try {
-            window.addEventListener('message', (e) => {
-                if (!e || !e.data) return;
-                if (e.data.type === 'rpg:toggle-walls') {
-                    const show = !!e.data.visible;
-                    if (Array.isArray(gameEnv?.gameObjects)) {
-                        for (const obj of gameEnv.gameObjects) {
-                            if (obj instanceof Barrier) {
-                                obj.visible = show;
-                            }
-                        }
-                    }
-                } else if (e.data.type === 'rpg:set-drawn-barriers') {
-                    const arr = Array.isArray(e.data.barriers) ? e.data.barriers : [];
-                    window.__overlayBarriers = window.__overlayBarriers || [];
-                    try {
-                        for (const ob of window.__overlayBarriers) {
-                            if (ob && typeof ob.destroy === 'function') ob.destroy();
-                        }
-                    } catch (_) {}
-                    window.__overlayBarriers = [];
-                    for (const bd of arr) {
-                        try {
-                            const data = {
-                                id: bd.id,
-                                x: bd.x,
-                                y: bd.y,
-                                width: bd.width,
-                                height: bd.height,
-                                visible: !!bd.visible,
-                                hitbox: { widthPercentage: 0.0, heightPercentage: 0.0 },
-                                fromOverlay: true
-                            };
-                            const bobj = new Barrier(data, gameEnv);
-                            gameEnv.gameObjects.push(bobj);
-                            window.__overlayBarriers.push(bobj);
-                        } catch (_) {}
-                    }
-                }
-            });
         } catch (_) {}
         /* BUILDER_ONLY_END */
     }
