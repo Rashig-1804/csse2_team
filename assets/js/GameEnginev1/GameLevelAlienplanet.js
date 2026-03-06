@@ -104,8 +104,7 @@ this.classes = [      { class: GameEnvBackground, data: bgData },
       { class: Barrier, data: dbarrier_3 }
 ];
 
-        
     }
 }
 
-export default GameLevelAlienplanet;
+export const gameLevelClasses = [GameLevelAlienplanet];
