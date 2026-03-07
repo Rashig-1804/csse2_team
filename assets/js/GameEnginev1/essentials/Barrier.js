@@ -47,10 +47,11 @@ class Barrier extends GameObject {
 
     setupCanvas() {
         // Position barrier canvas in game space; y offset includes gameEnv.top
+        this.canvas.style.position = this.fromOverlay ? 'fixed' : 'absolute';
         this.canvas.style.width = `${this.width}px`;
         this.canvas.style.height = `${this.height}px`;
         this.canvas.style.left = `${this.x}px`;
-        const topOffset = (this.gameEnv?.top || 0);
+        const topOffset = this.fromOverlay ? 0 : (this.gameEnv?.top || 0);
         this.canvas.style.top = `${topOffset + this.y}px`;
     }
 
