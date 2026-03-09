@@ -50,7 +50,7 @@ class GameLevelGameLevelSomethingJs {
 
         const npcData1 = {
             id: 'rpoopeepoo',
-            greeting: 'yo mama has a fat ahh',
+            greeting: 'yo mama is the most glorious creature on this entire planet!, she is so big and beautiful that when she walks by the ground shakes and the birds fall from the sky in awe of her magnificence',
             src: path + "/images/gamify/r2_idle.png",
             SCALE_FACTOR: 8,
             ANIMATION_RATE: 50,
@@ -66,7 +66,7 @@ class GameLevelGameLevelSomethingJs {
             upLeft: { row: Math.min(2, 1 - 1), start: 0, columns: 3 },
             downLeft: { row: 0, start: 0, columns: 3 },
             hitbox: { widthPercentage: 0.1, heightPercentage: 0.2 },
-            dialogues: ['yo mama has a fat ahh'],
+            dialogues: ['yo mama is the most glorious creature on this entire planet!, she is so big and beautiful that when she walks by, the ground shakes and the birds fall from the sky in awe of her magnificence'],
             reaction: function() { if (this.dialogueSystem) { this.showReactionDialogue(); } else { console.log(this.greeting); } },
             interact: function() { if (this.dialogueSystem) { this.showRandomDialogue(); } }
         };
