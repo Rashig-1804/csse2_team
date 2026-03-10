@@ -12,10 +12,10 @@
 // Adventure Game Custom Level
 // Exported from GameBuilder on 2026-03-05T09:09:33.517Z
 
-import GameEnvBackground from './essentials/GameEnvBackground.js';
-import Player from './essentials/Player.js';
-import Npc from './essentials/Npc.js';
-import Barrier from './essentials/Barrier.js';
+import GameEnvBackground from '../GameEnginev1/essentials/GameEnvBackground.js';
+import Player from '../GameEnginev1/essentials/Player.js';
+import Npc from '../GameEnginev1/essentials/Npc.js';
+import Barrier from '../GameEnginev1/essentials/Barrier.js';
 
 class GameLevelAlienplanet {
     constructor(gameEnv) {
@@ -108,31 +108,36 @@ class GameLevelAlienplanet {
             }
         };
 
+        // the broken satellite is a dangerous obstacle in the level that the player must avoid
+        // npc configuration for the broken satellite
+        const npcData2 = {
+            id: 'satellite',
+            greeting: 'Avoid the broken satellite, get to the astronaut!',
+            src: path + "/images/gamify/brokensatelite.png",
+            SCALE_FACTOR: 2,
+            ANIMATION_RATE: 0,  // No animation
+            INIT_POSITION: { x: 100, y: 300 },
+            pixels: { height: 515, width: 484 },  // Actual image size
+            orientation: { rows: 1, columns: 1 },
+            down: { row: 0, start: 0, columns: 1 },
+            hitbox: { widthPercentage: 0.1, heightPercentage: 0.2 },
+            dialogues: ['Avoid the broken satellite, get to the astronaut!']
+        };
+
 
         // barrier configuration for the invisible barriers in the level
         const dbarrier_1 = {
-            id: 'dbarrier_1', x: 591, y: 3, width: 133, height: 279, visible: false,
+            id: 'dbarrier_1', x: 900, y: 3, width: 133, height: 279, visible: true,
             hitbox: { widthPercentage: 0.0, heightPercentage: 0.0 },
             fromOverlay: true
         };
 
-        const dbarrier_2 = {
-            id: 'dbarrier_2', x: 15, y: 247, width: 222, height: 96, visible: false,
-            hitbox: { widthPercentage: 0.0, heightPercentage: 0.0 },
-            fromOverlay: true
-        };
 
-        const dbarrier_3 = {
-            id: 'dbarrier_3', x: 88, y: 201, width: 14, height: 36, visible: false,
-            hitbox: { widthPercentage: 0.0, heightPercentage: 0.0 },
-            fromOverlay: true
-        };
 this.classes = [      { class: GameEnvBackground, data: bgData },
       { class: Player, data: playerData },
       { class: Npc, data: npcData1 },
+      { class: Npc, data: npcData2 },
       { class: Barrier, data: dbarrier_1 },
-      { class: Barrier, data: dbarrier_2 },
-      { class: Barrier, data: dbarrier_3 }
 ];
 
     }

@@ -10,10 +10,10 @@
 // 3) Ensure images exist and paths resolve via 'path' provided by the engine.
 // 4) You can add more objects to this.classes inside the constructor.
 
-import GameEnvBackground from '/assets/js/GameEnginev1/essentials/GameEnvBackground.js';
-import Player from '/assets/js/GameEnginev1/essentials/Player.js';
-import Npc from '/assets/js/GameEnginev1/essentials/Npc.js';
-import Barrier from '/assets/js/GameEnginev1/essentials/Barrier.js';
+import GameEnvBackground from './essentials/GameEnvBackground.js';
+import Player from './essentials/Player.js';
+import Npc from './essentials/Npc.js';
+import Barrier from './essentials/Barrier.js';
 
 class GameLevelGameLevelSomethingJs {
     constructor(gameEnv) {
@@ -50,7 +50,7 @@ class GameLevelGameLevelSomethingJs {
 
         const npcData1 = {
             id: 'rpoopeepoo',
-            greeting: 'yo mama has a fat ahh',
+            greeting: 'yo mama is the most glorious creature on this entire planet!, she is so big and beautiful that when she walks by the ground shakes and the birds fall from the sky in awe of her magnificence',
             src: path + "/images/gamify/r2_idle.png",
             SCALE_FACTOR: 8,
             ANIMATION_RATE: 50,
@@ -66,7 +66,7 @@ class GameLevelGameLevelSomethingJs {
             upLeft: { row: Math.min(2, 1 - 1), start: 0, columns: 3 },
             downLeft: { row: 0, start: 0, columns: 3 },
             hitbox: { widthPercentage: 0.1, heightPercentage: 0.2 },
-            dialogues: ['yo mama has a fat ahh'],
+            dialogues: ['yo mama is the most glorious creature on this entire planet!, she is so big and beautiful that when she walks by, the ground shakes and the birds fall from the sky in awe of her magnificence'],
             reaction: function() { if (this.dialogueSystem) { this.showReactionDialogue(); } else { console.log(this.greeting); } },
             interact: function() { if (this.dialogueSystem) { this.showRandomDialogue(); } }
         };
